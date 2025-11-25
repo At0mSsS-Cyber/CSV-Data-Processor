@@ -138,12 +138,7 @@ function GroupsView({ groups, fileId }) {
                   <div className="divide-y divide-gray-100">
                     {displayRecords.map(record => (
                       <div key={record.id} className="px-6 py-4 hover:bg-gray-50 transition-colors">
-                        <div className="flex gap-4">
-                          <div className="flex-shrink-0">
-                            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-gray-700 font-semibold text-sm">
-                              #{record.id}
-                            </span>
-                          </div>
+                        <div className="flex-1 gap-4">
                           <div className="flex-1 space-y-2">
                             {Object.entries(record.cleanedData).map(([field, value]) => (
                               <div key={field} className="flex flex-wrap gap-2 text-sm">

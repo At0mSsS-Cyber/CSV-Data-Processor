@@ -6,7 +6,6 @@ import (
 
 type CategoryGrouper struct {
 	rules       map[string]string   // specific term -> group
-	normalizer  *TermNormalizer     // for term canonicalization
 }
 
 // categoryDefinitions - Simple map of category -> keywords
@@ -143,7 +142,6 @@ var categoryDefinitions = map[string][]string{
 func NewCategoryGrouper() *CategoryGrouper {
 	grouper := &CategoryGrouper{
 		rules:      make(map[string]string),
-		normalizer: NewTermNormalizer(),
 	}
 	grouper.initializeRules()
 	return grouper
@@ -264,23 +262,6 @@ func abs(x int) int {
 // AddRule allows dynamic addition of grouping rules
 func (g *CategoryGrouper) AddRule(term string, group string) {
 	g.rules[strings.ToLower(term)] = group
-}
-
-// GetNormalizedTerm returns the canonical form of a term for similar variations
-func (g *CategoryGrouper) GetNormalizedTerm(term string) string {
-	cleaned := strings.ToLower(strings.TrimSpace(term))
-	
-	// Only normalize if we find a very close match
-	normalized := g.normalizer.NormalizeTerm(cleaned)
-	
-	// Only return normalized if it matches a known category
-	if normalized != cleaned {
-		if _, exists := g.rules[normalized]; exists {
-			return normalized
-		}
-	}
-	
-	return cleaned
 }
 
 // GetAllGroups returns all defined groups with their keywords
