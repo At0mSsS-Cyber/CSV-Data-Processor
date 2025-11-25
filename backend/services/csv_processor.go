@@ -183,7 +183,7 @@ func (p *CSVProcessor) detectCategory(data map[string]string) string {
 // detectCategoryColumn finds the most likely category column from headers
 func (p *CSVProcessor) detectCategoryColumn(headers []string) string {
 	// Keywords that indicate a category-like column (ordered by priority)
-	categoryKeywords := []string{
+	categoryFields := []string{
 		"category", "type", "specialty", "profession", "occupation",
 		"role", "title", "job", "position", "designation",
 		"department", "field", "industry", "sector", "work",
@@ -192,7 +192,7 @@ func (p *CSVProcessor) detectCategoryColumn(headers []string) string {
 	// First pass: exact match
 	for _, header := range headers {
 		headerLower := strings.ToLower(header)
-		for _, keyword := range categoryKeywords {
+		for _, keyword := range categoryFields {
 			if headerLower == keyword {
 				return header
 			}
@@ -202,7 +202,7 @@ func (p *CSVProcessor) detectCategoryColumn(headers []string) string {
 	// Second pass: contains match
 	for _, header := range headers {
 		headerLower := strings.ToLower(header)
-		for _, keyword := range categoryKeywords {
+		for _, keyword := range categoryFields {
 			if strings.Contains(headerLower, keyword) {
 				return header
 			}
