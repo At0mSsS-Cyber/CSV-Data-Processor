@@ -14,8 +14,8 @@ A high-performance CSV data processing system built with **Go** backend and **Re
 ## 📁 Project Structure
 
 ```
-elsapien-work/
-├── backend/              # Go backend server
+CSV-Data-Processor/
+├── backend/              c# Go backend server
 │   ├── main.go          # Entry point & HTTP server
 │   ├── go.mod           # Go dependencies
 │   ├── handlers/        # HTTP request handlers
@@ -245,20 +245,3 @@ For production deployment:
 9. Add HTTPS with Let's Encrypt
 10. Set up monitoring (Prometheus/Grafana)
 
-## 📝 License
-
-This project is created for interview assessment purposes.
-
-## 👤 Author
-
-Created for ElSapien interview assessment - November 2025
-
----
-
-**Interview Highlights:**
-- ✅ Rejected Python backend (speed requirement)
-- ✅ Chose Go for data processing performance
-- ✅ Implemented concurrent CSV parsing
-- ✅ Built maintainable grouping logic
-- ✅ Optimized search with inverted index
-- ✅ Clean, readable, well-structured code
